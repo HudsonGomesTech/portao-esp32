@@ -18,7 +18,7 @@
 #include "esp_random.h"
 #include "esp_timer.h"
 
-#define VERSAO "1.0.0"
+#define VERSAO "1.0.1"
 #define PINO_BOOT 9            // botão BOOT da placa
 #define PINO_LED 8             // LED azul da placa (acende em nível baixo)
 #define INTERVALO_TOQUES_MS 2000
@@ -110,7 +110,7 @@ void envia(int codigo, const String& html) {
 
 // ---------- configuração guardada na placa
 void carregaConfig() {
-  prefs.begin("hgt", true);
+  prefs.begin("hgt", false);   // leitura e escrita: cria a área na primeira partida, sem erro no log
   cfg.ok = prefs.getBool("ok", false);
   cfg.ssid = prefs.getString("ssid", ""); cfg.senhaWifi = prefs.getString("wifi", "");
   cfg.usuario = prefs.getString("usuario", ""); cfg.sal = prefs.getString("sal", ""); cfg.hash = prefs.getString("hash", "");

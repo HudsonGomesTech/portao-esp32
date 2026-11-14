@@ -17,23 +17,43 @@ uma página no celular.
 
 ## Material
 
-| Peça | Observação |
-|---|---|
-| ESP32-C3 Super Mini | a placa usada no vídeo |
-| Módulo relé de 1 canal, 5 V, com optoacoplador | faz o papel do botão do portão |
-| Fios (jumpers) | três entre a placa e o relé, dois entre o relé e o portão |
-| Cabo USB-C **de dados** | cabo só de carga não serve para gravar |
-| Ferro de solda e estanho fino com fluxo (0,5 a 0,8 mm) | para soldar os pinos da placa |
-| Fonte USB de 5 V | um carregador de celular serve |
+Os links são da [Usinainfo](https://www.usinainfo.com.br/), onde as peças do vídeo foram compradas. Não é patrocínio; as mesmas peças
+existem no Mercado Livre e na Amazon. Preços no Pix em 14/11/2026, só para dar uma ideia.
+
+**O kit (cerca de R$ 73)**
+
+| Peça | Observação | Preço |
+|---|---|---|
+| [ESP32-C3 Super Mini](https://www.usinainfo.com.br/esp32/esp32-c3-super-mini-com-wifi-e-bluetooth-com-usb-c-8967.html) | a placa usada no vídeo | R$ 32,60 |
+| [Módulo relé **5 V** de 1 canal, com optoacoplador e jumper H/L](https://www.usinainfo.com.br/rele-arduino/modulo-rele-5v-10a-1-canal-com-optoacoplador-para-esp32-e-arduino-2533.html) | faz o papel do botão do portão. **Cuidado para não comprar o de 12 V.** | R$ 10,93 |
+| [Fonte USB 5 V 2 A com cabo USB-C](https://www.usinainfo.com.br/fonte-chaveada-usb-e-p4/carregador-fonte-usb-2a-com-cabo-usb-c-para-arduino-e-esp32-8591.html) | um carregador de celular que você já tenha também serve | R$ 29,07 |
+| Fios finos | três entre a placa e o relé, dois entre o relé e o portão | sobra de casa |
+
+Para gravar o programa, o cabo USB-C precisa ser **de dados**: cabo só de carga não serve.
+
+**Compra única, se você ainda não tem (cerca de R$ 91)**
+
+| Ferramenta | Observação | Preço |
+|---|---|---|
+| [Ferro de solda Hikari 34 W](https://www.usinainfo.com.br/ferro-de-solda/ferro-de-solda-hikari-34w-plus-sc40-1864.html) | confira a tensão da sua tomada (127 V ou 220 V) | R$ 68,29 |
+| [Estanho em fio 1,0 mm 63/37 com fluxo](https://www.usinainfo.com.br/estanho-para-solda/fio-de-estanho-para-solda-10mm-liga-6337-tubo-22g-cobix-8293.html) | um tubo dura muito | R$ 22,27 |
 
 ## Ligação
 
 | De | Para |
 |---|---|
-| ESP32 `5V` | relé `VCC` |
-| ESP32 `GND` | relé `GND` |
+| ESP32 `5V` | relé `DC+` (ou `VCC`) |
+| ESP32 `G` (GND) | relé `DC-` (ou `GND`) |
 | ESP32 `GPIO 5` | relé `IN` |
-| relé `COM` e `NA` (normalmente aberto) | os dois bornes de **botoeira** da placa do portão |
+| relé `COM` e `NO` (normalmente aberto) | os dois bornes de **botoeira** da placa do portão |
+
+Atenção a três pontos:
+
+- Os três fios do ESP32 vão no borne `DC+ / DC- / IN`. O outro borne (`NO / COM / NC`) é o contato do relé e vai
+  **só** para o portão. Fio do ESP32 nesse borne pode queimar a placa.
+- Módulo com relé de **5 V** (escrito `05VDC` no relé) é alimentado pelo pino `5V` do ESP32. Só o módulo com relé de
+  **3 V** (`03VDC`) pode ser alimentado pelo pino `3.3`.
+- Se o módulo tiver o jumper `H / L`, deixe em **H** (liga com nível alto), que é o padrão do programa.
 
 O relé só encosta os dois bornes de botoeira por meio segundo, como um botão de parede. Confira no manual da sua placa
 quais são esses bornes. O pino, o nível que liga o relé e a duração do toque podem ser trocados na tela de configuração.
