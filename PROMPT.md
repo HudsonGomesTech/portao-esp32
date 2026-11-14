@@ -17,7 +17,8 @@ Faça nesta ordem e me explique cada passo em português simples:
 5. Baixe o arquivo .bin da pasta firmware do projeto e confira o SHA-256 com o arquivo SHA256SUMS da mesma pasta.
 6. Me mostre o comando de gravação e espere eu confirmar.
 7. Grave o .bin no endereço 0x0 (chip esp32c3) e confira a gravação.
-8. No fim, me diga o que fazer no celular para configurar a placa.
+8. No fim, me peça para tirar e pôr o cabo USB: a placa só começa a rodar o programa novo depois disso. Aí me diga
+   o que fazer no celular para configurar a placa.
 
 Não grave nada antes da cópia de segurança terminar e de eu confirmar.
 ```

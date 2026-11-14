@@ -65,6 +65,7 @@ quais são esses bornes. O pino, o nível que liga o relé e a duração do toqu
 1. No Windows, abra o PowerShell e o Claude Code instalado no computador (não a versão do navegador).
 2. Ligue a placa no computador pelo cabo USB.
 3. Cole o texto do arquivo [`PROMPT.md`](PROMPT.md).
+4. Quando a gravação terminar, tire e ponha o cabo USB. A rede `HGT-Portao-XXXX` aparece em alguns segundos.
 
 O Claude Code precisa de um plano pago (o Pro já serve). O plano gratuito não inclui o Claude Code.
 
@@ -74,6 +75,10 @@ O Claude Code precisa de um plano pago (o Pro já serve). O plano gratuito não 
 2. No Chrome ou no Edge, abra <https://espressif.github.io/esptool-js/>.
 3. Clique em **Connect** e escolha a porta da placa. Se ela não aparecer, segure o botão BOOT enquanto encaixa o cabo.
 4. Em **Flash Address** coloque `0x0`, escolha o arquivo `.bin` e clique em **Program**.
+5. Quando terminar, tire e ponha o cabo USB.
+
+> **A rede da placa não apareceu?** Logo depois de gravar, a placa pode continuar no modo de gravação, e o programa
+> novo ainda não está rodando. Tire e ponha o cabo USB, sem apertar o botão BOOT.
 
 ## Primeira configuração
 
