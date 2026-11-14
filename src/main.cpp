@@ -18,7 +18,7 @@
 #include "esp_random.h"
 #include "esp_timer.h"
 
-#define VERSAO "1.0.1"
+#define VERSAO "1.0.2"
 #define PINO_BOOT 9            // botão BOOT da placa
 #define PINO_LED 8             // LED azul da placa (acende em nível baixo)
 #define INTERVALO_TOQUES_MS 2000
@@ -112,9 +112,12 @@ void envia(int codigo, const String& html) {
 void carregaConfig() {
   prefs.begin("hgt", false);   // leitura e escrita: cria a área na primeira partida, sem erro no log
   cfg.ok = prefs.getBool("ok", false);
-  cfg.ssid = prefs.getString("ssid", ""); cfg.senhaWifi = prefs.getString("wifi", "");
-  cfg.usuario = prefs.getString("usuario", ""); cfg.sal = prefs.getString("sal", ""); cfg.hash = prefs.getString("hash", "");
-  cfg.nome = prefs.getString("nome", "Portao");
+  cfg.nome = "Portao";
+  if (cfg.ok) {   // placa ainda sem configuração: não lê o que não existe (evita linhas de erro no log)
+    cfg.ssid = prefs.getString("ssid", ""); cfg.senhaWifi = prefs.getString("wifi", "");
+    cfg.usuario = prefs.getString("usuario", ""); cfg.sal = prefs.getString("sal", ""); cfg.hash = prefs.getString("hash", "");
+    cfg.nome = prefs.getString("nome", "Portao");
+  }
   cfg.pino = prefs.getInt("pino", 5); cfg.ativoAlto = prefs.getBool("alto", true); cfg.pulsoMs = prefs.getInt("pulso", 500);
   prefs.end();
   if (!pinoValido(cfg.pino) || cfg.ssid.isEmpty() || cfg.hash.length() != 64) cfg.ok = false;
