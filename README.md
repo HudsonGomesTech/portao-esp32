@@ -18,7 +18,7 @@ uma página no celular.
 ## Material
 
 Os links são da [Usinainfo](https://www.usinainfo.com.br/), onde as peças do vídeo foram compradas. Não é patrocínio; as mesmas peças
-existem no Mercado Livre e na Amazon. Preços no Pix em 14/11/2026, só para dar uma ideia.
+existem no Mercado Livre e na Amazon. Preços no Pix em 15/11/2026, só para dar uma ideia.
 
 **O kit (cerca de R$ 73)**
 
@@ -28,6 +28,9 @@ existem no Mercado Livre e na Amazon. Preços no Pix em 14/11/2026, só para dar
 | [Módulo relé **5 V** de 1 canal, com optoacoplador e jumper H/L](https://www.usinainfo.com.br/rele-arduino/modulo-rele-5v-10a-1-canal-com-optoacoplador-para-esp32-e-arduino-2533.html) | faz o papel do botão do portão. **Cuidado para não comprar o de 12 V.** | R$ 10,93 |
 | [Fonte USB 5 V 2 A com cabo USB-C](https://www.usinainfo.com.br/fonte-chaveada-usb-e-p4/carregador-fonte-usb-2a-com-cabo-usb-c-para-arduino-e-esp32-8591.html) | um carregador de celular que você já tenha também serve | R$ 29,07 |
 | Fios finos | três entre a placa e o relé, dois entre o relé e o portão | sobra de casa |
+
+O relé que aparece no vídeo é um módulo de **3 V** (`JQC3F-03VDC`, azul), ligado no pino `3.3` da placa. O módulo de
+**5 V** do link acima funciona do mesmo jeito, ligado no pino `5V`. O de 12 V não funciona com esta placa.
 
 Para gravar o programa, o cabo USB-C precisa ser **de dados**: cabo só de carga não serve.
 
@@ -42,7 +45,7 @@ Para gravar o programa, o cabo USB-C precisa ser **de dados**: cabo só de carga
 
 | De | Para |
 |---|---|
-| ESP32 `5V` | relé `DC+` (ou `VCC`) |
+| ESP32 `5V` (relé de 5 V) ou `3.3` (relé de 3 V, como no vídeo) | relé `DC+` (ou `VCC`) |
 | ESP32 `G` (GND) | relé `DC-` (ou `GND`) |
 | ESP32 `GPIO 5` | relé `IN` |
 | relé `COM` e `NO` (normalmente aberto) | os dois bornes de **botoeira** da placa do portão |
